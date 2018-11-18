@@ -1,11 +1,7 @@
 
 import matplotlib.pyplot as plt
-import plotly.plotly as py
-
-filePath = "./test.docx"
 
 def main():
-    #print(getTxt(filePath))
     filename = "test.txt"
     allWords = {}
     counter = 0
@@ -19,7 +15,8 @@ def main():
             else:
                 allWords[word].append(counter) 
             counter+=1
-    
+            
+    # x,y,z for ribbon Plot
     wordArray = [] #x
     indexes = []   #y
     counts = []    #z
@@ -31,9 +28,10 @@ def main():
 
             counts.append(tmpArray)
             indexes.append(allWords[word])
-            
-            plt.plot(allWords[word], tmpArray)
             wordArray.append(word)
+
+            plt.plot(allWords[word], tmpArray)
+           
     plt.legend(wordArray)
     plt.show()
    

@@ -1,6 +1,14 @@
 
 import matplotlib.pyplot as plt
 
+filtered = ["der", "die", "das", "ein", "eine", "einer", "es", "ist", "für", "im", "wird", 
+"auch", "mit", "aus", "von", "als", "in", "werden", "wurde", "oder", "auf", "wie", "den" ,
+"zu", "dieser", "nicht", "sind", "des", "einen", "um", "können" , "nur", "diese", "wird", 
+"eines", "über", "hier", "dem", "so", "werde," ,"werde.", "werden." ,"dies", "muss", "alle", 
+"an" , "das", "der", "nach", "zum", "gibt", "da", "mehr", "dass", "gibt", "zum" ]
+
+
+
 def main():
     filename = "test.txt"
     allWords = {}
@@ -17,21 +25,28 @@ def main():
             counter+=1
             
     # x,y,z for ribbon Plot
-    wordArray = [] #x
-    indexes = []   #y
-    counts = []    #z
+    wordArray = []  #x
+    #indexes = []   #y
+    #counts = []    #z
+    
+
+
     for word in allWords:
-        if len(allWords[word]) > 10:
+        if len(allWords[word]) > 10 and word.lower() not in filtered:
             tmpArray = []
             for index in allWords[word]:
+                
                 tmpArray.append(len(tmpArray)) 
 
-            counts.append(tmpArray)
-            indexes.append(allWords[word])
+            #counts.append(tmpArray)
+            #indexes.append(allWords[word])
             wordArray.append(word)
 
-            plt.plot(allWords[word], tmpArray)
-           
+            plt.scatter(allWords[word], tmpArray)
+            print(word, len(tmpArray))
+    #plt.yscale('log')
+
+        
     plt.legend(wordArray)
     plt.show()
    

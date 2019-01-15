@@ -23,29 +23,16 @@ def main():
             else:
                 allWords[word].append(counter) 
             counter+=1
-            
-    # x,y,z for ribbon Plot
-    wordArray = []  #x
-    #indexes = []   #y
-    #counts = []    #z
-    
-
-
+    wordArray = []  
     for word in allWords:
         if len(allWords[word]) > 10 and word.lower() not in filtered:
             tmpArray = []
             for index in allWords[word]:
-                
                 tmpArray.append(len(tmpArray)) 
-
-            #counts.append(tmpArray)
-            #indexes.append(allWords[word])
             wordArray.append(word)
 
             plt.scatter(allWords[word], tmpArray)
             print(word, len(tmpArray))
-    #plt.yscale('log')
-
         
     plt.legend(wordArray)
     plt.show()
